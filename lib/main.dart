@@ -22,7 +22,7 @@ Widget build(BuildContext context) {
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
         onGenerateRoute: onGenerate,
-        initialRoute: AppRouter.loginPage,
+        initialRoute: AppRouter.homePage,
       ),
     ),
   );

@@ -2,12 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:luxira/core/utils/navigation/routers.dart';
 import 'package:luxira/features/auth/login/ui/login_view.dart';
+import 'package:luxira/features/auth/register/ui/register_view.dart';
 
 Route<dynamic> onGenerate(RouteSettings setting) {
   switch (setting.name) {
     case AppRouter.loginPage:
       {
         return CupertinoPageRoute(builder: (_) => const LoginView());
+      }
+    case AppRouter.registerPage:
+      {
+        return CupertinoPageRoute(builder: (_) => const RegisterView());
       }
 
     default:

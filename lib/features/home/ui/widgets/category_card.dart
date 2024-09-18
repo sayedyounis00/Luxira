@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:luxira/features/home/data/model/category.dart';
 
 class CategoryCard extends StatelessWidget {
@@ -9,7 +10,7 @@ class CategoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       child: SizedBox(
-        height: MediaQuery.of(context).size.height * 0.1,
+        height: MediaQuery.of(context).size.height * 0.15,
         width: MediaQuery.of(context).size.width * 0.22,
         child: Card(
             child: Column(
@@ -21,7 +22,7 @@ class CategoryCard extends StatelessWidget {
             Text(
               categorie.title,
               style:
-                  TextStyle(fontSize: 15.23, color: Colors.black.withOpacity(.6)),
+                  TextStyle(fontSize: 34.sp, color: Colors.black.withOpacity(.6)),
             ),
           ],
         )),

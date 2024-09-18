@@ -37,7 +37,7 @@ class AppTextFeild extends StatelessWidget {
         ),
         TextFormField(
           obscureText: obscureText ?? false,
-          validator:validator,
+          validator: validator,
           enabled: true,
           controller: controller,
           keyboardType: keyboardType,

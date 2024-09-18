@@ -22,6 +22,7 @@ class _LoginViewState extends State<LoginView> {
   TextEditingController emailcont = TextEditingController();
   TextEditingController passwordcont = TextEditingController();
   var myKey = GlobalKey<FormState>();
+
   @override
   void dispose() {
     emailcont.clear();
@@ -35,13 +36,18 @@ class _LoginViewState extends State<LoginView> {
       body: SingleChildScrollView(
         child: SafeArea(
           child: Padding(
-            padding: EdgeInsets.all(16.0.h),
+            padding: EdgeInsets.all(40.w),
             child: Form(
               key: myKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SpaceV(200),
+                  const SpaceV(130),
+                  Image.asset(
+                    'assets/images/logo.png',
+                    width: 120,
+                  ),
+                  const SpaceV(20),
                   const WelcomeText(),
                   const RedirectToRegister(),
                   AppTextFeild(
@@ -101,6 +107,7 @@ class _LoginViewState extends State<LoginView> {
                       style: TextStyles.font20Weight500white,
                     ),
                   ),
+                  const SpaceV(10),
                   Row(
                     children: [
                       const Expanded(child: Divider(endIndent: 15)),

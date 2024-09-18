@@ -35,7 +35,7 @@ class _RegisterViewState extends State<RegisterView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.only(left: 16.0.w, right: 16.w, top: 400.h),
+        padding: EdgeInsets.only(left: 40.0.w, right: 40.w, top: 150.h),
         child: SafeArea(
           child: SingleChildScrollView(
             child: Form(
@@ -43,6 +43,10 @@ class _RegisterViewState extends State<RegisterView> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Image.asset(
+                    'assets/images/logo.png',
+                    width: 120,
+                  ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 10.0.h),
                     child: const WelcomeText(),
@@ -170,7 +174,7 @@ class _RegisterViewState extends State<RegisterView> {
                       return AppCustomButton(
                         buttonWidget: state is RegisterLoading
                             ? const Center(child: CircularProgressIndicator())
-                            :  Text(
+                            : Text(
                                 'Register',
                                 style: TextStyles.font20Weight500white,
                               ),
@@ -204,20 +208,21 @@ class _RegisterViewState extends State<RegisterView> {
                       );
                     },
                   ),
-                   Row(
-                children: [
-                  const Expanded(child: Divider(endIndent: 15)),
-                  Text(
-                    'or login with',
-                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                          color: Colors.black.withOpacity(.5),
-                        ),
+                  const SpaceV(10),
+                  Row(
+                    children: [
+                      const Expanded(child: Divider(endIndent: 15)),
+                      Text(
+                        'or login with',
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                              color: Colors.black.withOpacity(.5),
+                            ),
+                      ),
+                      const Expanded(child: Divider(indent: 15)),
+                    ],
                   ),
-                  const Expanded(child: Divider(indent: 15)),
-                ],
-              ),
-              const SpaceV(20),
-              const SignWithGoogle()
+                  const SpaceV(20),
+                  const SignWithGoogle()
                 ],
               ),
             ),
@@ -235,5 +240,3 @@ class _RegisterViewState extends State<RegisterView> {
     );
   }
 }
-
-

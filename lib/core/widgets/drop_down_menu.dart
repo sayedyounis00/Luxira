@@ -13,7 +13,7 @@ class AppDropDownMenu extends StatefulWidget {
 
 class _AppDropDownMenuState extends State<AppDropDownMenu> {
   List<String> types = ['male', 'female'];
-   String dropdownVal='male';
+  String dropdownVal = 'male';
   @override
   Widget build(BuildContext context) {
     return Column(

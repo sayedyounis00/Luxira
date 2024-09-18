@@ -40,7 +40,7 @@ class HomeView extends StatelessWidget {
             child: TitleAndSeeAll(title: 'Offers', onPressed: () {}),
           ),
           AppListViewbuilder(
-              height: MediaQuery.of(context).size.height * 0.25,
+              height: MediaQuery.of(context).size.height * 0.27,
               itemBuilder: (BuildContext context, int index) {
                 return ProductCard(productDetails: product[index]);
               },

@@ -14,6 +14,7 @@ import 'package:luxira/features/auth/register/data/new_user.dart';
 import 'package:luxira/features/auth/register/logic/cubit/register_cubit.dart';
 import 'package:luxira/features/auth/register/ui/widgets/welcome_text.dart';
 
+
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
 
@@ -170,7 +171,7 @@ class _RegisterViewState extends State<RegisterView> {
                       return AppCustomButton(
                         buttonWidget: state is RegisterLoading
                             ? const Center(child: CircularProgressIndicator())
-                            :  Text(
+                            : Text(
                                 'Register',
                                 style: TextStyles.font20Weight500white,
                               ),
@@ -204,20 +205,22 @@ class _RegisterViewState extends State<RegisterView> {
                       );
                     },
                   ),
-                   Row(
-                children: [
-                  const Expanded(child: Divider(endIndent: 15)),
-                  Text(
-                    'or login with',
-                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                          color: Colors.black.withOpacity(.5),
-                        ),
+                  Row(
+                    children: [
+                      const Expanded(child: Divider(endIndent: 15)),
+                      Text(
+                        'or',
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                              color: Colors.black,
+                            ),
+                      ),
+                      const Expanded(child: Divider(indent: 15)),
+                    ],
                   ),
-                  const Expanded(child: Divider(indent: 15)),
-                ],
-              ),
-              const SpaceV(20),
-              const SignWithGoogle()
+                  const SpaceV(20),
+                  SignWithGoogle(onTap: () async {
+                    BlocProvider.of<RegisterCubit>(context).GoogleSignin();
+                  })
                 ],
               ),
             ),
@@ -235,5 +238,3 @@ class _RegisterViewState extends State<RegisterView> {
     );
   }
 }
-
-

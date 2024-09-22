@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:luxira/core/widgets/space.dart';
 
 class SignWithGoogle extends StatelessWidget {
+  final Function() onTap;
   const SignWithGoogle({
-    super.key,
+    super.key, required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: onTap,
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 8),
         decoration: BoxDecoration(

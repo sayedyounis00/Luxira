@@ -107,14 +107,16 @@ class _LoginViewState extends State<LoginView> {
                       Text(
                         'or login with',
                         style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                              color: Colors.black.withOpacity(.5),
+                              color: Colors.black,
                             ),
                       ),
                       const Expanded(child: Divider(indent: 15)),
                     ],
                   ),
                   const SpaceV(20),
-                  const SignWithGoogle()
+                   SignWithGoogle(
+                    onTap: () {},
+                  )
                 ],
               ),
             ),

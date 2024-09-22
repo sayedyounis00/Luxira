@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:luxira/core/helper/networking/api_services.dart';
 import 'package:luxira/core/utils/constants/strings.dart';
 import 'package:luxira/features/auth/register/data/new_user.dart';
@@ -10,6 +11,12 @@ part 'register_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit() : super(RegisterInitial());
+  final GoogleSignIn googleSignIn = GoogleSignIn(
+    scopes: [
+      'email',
+      'https://e-commerce-production-2d41.up.railway.app/api/auth/google/register',
+    ],
+  );
   late Response response;
   late NewUser user = NewUser(
       email: 'email',
@@ -32,7 +39,16 @@ class RegisterCubit extends Cubit<RegisterState> {
           .postMethod(url: ConstString.registerUrl, data: data);
       emit(RegisterSuccess(newUser: newUser));
     } catch (e) {
-      return log("error message:${e.toString()}:statuscode:${response.statusCode}");
+      return log(
+          "error message:${e.toString()}:statuscode:${response.statusCode}");
+    }
+  }
+
+  Future<void> GoogleSignin() async {
+    try {
+      await googleSignIn.signIn();
+    } catch (error) {
+      log(error.toString());
     }
   }
 }

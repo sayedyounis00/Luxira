@@ -14,6 +14,7 @@ import 'package:luxira/features/auth/register/logic/cubit/register_cubit.dart';
 import 'package:luxira/features/auth/register/ui/widgets/welcome_text.dart';
 import 'package:luxira/features/auth/verification.dart/ui/verification_view.dart';
 
+
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
 
@@ -209,7 +210,7 @@ class _RegisterViewState extends State<RegisterView> {
                     children: [
                       const Expanded(child: Divider(endIndent: 15)),
                       Text(
-                        'or login with',
+                        'or',
                         style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                               color: Colors.black,
                             ),
@@ -218,7 +219,9 @@ class _RegisterViewState extends State<RegisterView> {
                     ],
                   ),
                   const SpaceV(20),
-                  const SignWithGoogle()
+                  SignWithGoogle(onTap: () async {
+                    BlocProvider.of<RegisterCubit>(context).GoogleSignin();
+                  })
                 ],
               ),
             ),

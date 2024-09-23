@@ -16,7 +16,7 @@ class RedirectToRegister extends StatelessWidget {
           'New here?',
           //!change with style
           style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-              color: Colors.black.withOpacity(.5), fontWeight: FontWeight.w500),
+              color: Colors.black, fontWeight: FontWeight.w500),
         ),
         const SpaceH(5),
         InkWell(

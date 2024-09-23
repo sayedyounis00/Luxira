@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:luxira/core/utils/constants/colors.dart';
 import 'package:luxira/core/widgets/app_custom_button.dart';
 import 'package:luxira/core/widgets/space.dart';
-import 'package:luxira/features/auth/register/logic/cubit/register_cubit.dart';
 import 'package:luxira/features/auth/verification.dart/data/verificaton_repo.dart';
 import 'package:luxira/features/auth/verification.dart/ui/widgets/input_circule.dart';
 import 'package:luxira/features/auth/verification.dart/data/verification_data.dart';
 
 class VerificationView extends StatefulWidget {
-  const VerificationView({super.key});
+  final String email;
+  const VerificationView({super.key, required this.email});
 
   @override
   State<VerificationView> createState() => _VerificationViewState();
@@ -17,16 +16,13 @@ class VerificationView extends StatefulWidget {
 
 class _VerificationViewState extends State<VerificationView> {
   bool correct = true;
-  late String userEmail = 'init email';
   @override
   void initState() {
-    userEmail = BlocProvider.of<RegisterCubit>(context).user.email;
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    // String email = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -41,15 +37,14 @@ class _VerificationViewState extends State<VerificationView> {
         padding: const EdgeInsets.all(10.0),
         child: Center(
           child: Column(
-            // mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SpaceV(200),
               Text(
-                'Enter the one-Time code sent to the This email:',
+                'Enter the one-Time code sent to This email:',
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
               Text(
-                userEmail,
+                widget.email,
                 style: Theme.of(context)
                     .textTheme
                     .bodyLarge!
@@ -68,7 +63,7 @@ class _VerificationViewState extends State<VerificationView> {
                   ),
                   TextButton(
                     onPressed: () {
-                      VerificatonRepo().resendVerifyCode(userEmail);
+                      VerificatonRepo().resendVerifyCode(widget.email);
                     },
                     child: Text(
                       'Resend code',
@@ -85,8 +80,8 @@ class _VerificationViewState extends State<VerificationView> {
                 onTap: () {
                   correct = false;
                   VerificatonRepo()
-                  //! code from verificationdata.textediting controller
-                      .verifiyRegistration(code:'', email: userEmail);
+                      //! code from verificationdata.textediting controller
+                      .verifiyRegistration(code: '', email: widget.email);
                   setState(() {});
                 },
               )

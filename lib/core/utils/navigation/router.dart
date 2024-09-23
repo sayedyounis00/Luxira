@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:luxira/core/utils/navigation/routers.dart';
 import 'package:luxira/features/auth/login/ui/login_view.dart';
 import 'package:luxira/features/auth/register/ui/register_view.dart';
-import 'package:luxira/features/auth/verification.dart/ui/verification_view.dart';
+import 'package:luxira/features/auth/reset%20password/ui/forget_password.dart';
 import 'package:luxira/features/home/ui/home_view.dart';
 
 Route<dynamic> onGenerate(RouteSettings setting) {
@@ -16,14 +16,15 @@ Route<dynamic> onGenerate(RouteSettings setting) {
       {
         return CupertinoPageRoute(builder: (_) => const RegisterView());
       }
-    case AppRouter.verificationpage:
-      {
-        return CupertinoPageRoute(builder: (_) => const VerificationView());
-      }
     case AppRouter.homePage:
       {
         return CupertinoPageRoute(builder: (_) => const HomeView());
       }
+    case AppRouter.forgetPassword:
+      {
+        return CupertinoPageRoute(builder: (_) => const ForgetPassword());
+      }
+
     default:
       {
         return CupertinoPageRoute(

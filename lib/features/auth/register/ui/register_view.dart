@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:luxira/core/helper/validation/form_validation.dart';
-import 'package:luxira/core/utils/navigation/routers.dart';
 import 'package:luxira/core/utils/style/text_styles.dart';
 import 'package:luxira/core/widgets/app_custom_button.dart';
 import 'package:luxira/core/widgets/custom_text_feild.dart';
@@ -13,6 +12,7 @@ import 'package:luxira/features/auth/login/ui/widgets/sign_with_google.dart';
 import 'package:luxira/features/auth/register/data/new_user.dart';
 import 'package:luxira/features/auth/register/logic/cubit/register_cubit.dart';
 import 'package:luxira/features/auth/register/ui/widgets/welcome_text.dart';
+import 'package:luxira/features/auth/verification.dart/ui/verification_view.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
@@ -170,7 +170,7 @@ class _RegisterViewState extends State<RegisterView> {
                       return AppCustomButton(
                         buttonWidget: state is RegisterLoading
                             ? const Center(child: CircularProgressIndicator())
-                            :  Text(
+                            : Text(
                                 'Register',
                                 style: TextStyles.font20Weight500white,
                               ),
@@ -191,11 +191,12 @@ class _RegisterViewState extends State<RegisterView> {
                               ),
                             );
                             if (state is RegisterSuccess) {
-                              Navigator.pushNamed(
-                                context,
-                                AppRouter.verificationpage,
-                                arguments: emailcont.text,
-                              );
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => VerificationView(
+                                            email: emailcont.text,
+                                          )));
                             }
                           } else {
                             return null;
@@ -204,20 +205,20 @@ class _RegisterViewState extends State<RegisterView> {
                       );
                     },
                   ),
-                   Row(
-                children: [
-                  const Expanded(child: Divider(endIndent: 15)),
-                  Text(
-                    'or login with',
-                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                          color: Colors.black.withOpacity(.5),
-                        ),
+                  Row(
+                    children: [
+                      const Expanded(child: Divider(endIndent: 15)),
+                      Text(
+                        'or login with',
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                              color: Colors.black,
+                            ),
+                      ),
+                      const Expanded(child: Divider(indent: 15)),
+                    ],
                   ),
-                  const Expanded(child: Divider(indent: 15)),
-                ],
-              ),
-              const SpaceV(20),
-              const SignWithGoogle()
+                  const SpaceV(20),
+                  const SignWithGoogle()
                 ],
               ),
             ),
@@ -235,5 +236,3 @@ class _RegisterViewState extends State<RegisterView> {
     );
   }
 }
-
-

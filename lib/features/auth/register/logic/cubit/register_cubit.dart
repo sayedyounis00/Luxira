@@ -3,48 +3,41 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:luxira/core/helper/networking/api_services.dart';
-import 'package:luxira/core/utils/constants/strings.dart';
+import 'package:luxira/core/helper/networking/api_constants.dart';
+import 'package:luxira/features/auth/register/data/err_response.dart';
 import 'package:luxira/features/auth/register/data/new_user.dart';
 
 part 'register_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit() : super(RegisterInitial());
+  //!
   final GoogleSignIn googleSignIn = GoogleSignIn(
     scopes: [
       'email',
-      'https://e-commerce-production-2d41.up.railway.app/api/auth/google/register',
+      ApiConstants.regiserUsingGoogle,
     ],
   );
-  late Response response;
-  late NewUser user = NewUser(
-      email: 'email',
-      password: 'password',
-      firstname: 'firstname',
-      lastname: 'lastname',
-      gender: 'gender');
   void register(NewUser newUser) async {
     emit(RegisterLoading());
+    Map<String, dynamic> data = {
+      'firstName': newUser.firstname,
+      'lastName': newUser.lastname,
+      'gender': newUser.gender,
+      'email': newUser.email,
+      'password': newUser.password,
+    };
     try {
-      user = newUser;
-      Map<String, dynamic> data = {
-        'firstName': newUser.firstname,
-        'lastName': newUser.lastname,
-        'gender': newUser.gender,
-        'email': newUser.email,
-        'password': newUser.password,
-      };
-      response = await ApiServices()
-          .postMethod(url: ConstString.registerUrl, data: data);
-      emit(RegisterSuccess(newUser: newUser));
-    } catch (e) {
-      return log(
-          "error message:${e.toString()}:statuscode:${response.statusCode}");
+      await Dio().post(ApiConstants.registerUrl, data: data);
+      emit(RegisterSuccess());
+    } on DioException catch (e) {
+      log(e.response!.data.runtimeType.toString());
+      emit(
+          RegisterFailed(erroeMessage: ErrResponse.fromJson(e.response!.data)));
     }
   }
 
-  Future<void> GoogleSignin() async {
+  Future<void> googleSignin() async {
     try {
       await googleSignIn.signIn();
     } catch (error) {

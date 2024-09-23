@@ -22,7 +22,7 @@ Route<dynamic> onGenerate(RouteSettings setting) {
       }
     case AppRouter.forgetPassword:
       {
-        return CupertinoPageRoute(builder: (_) => const ForgetPassword());
+        return CupertinoPageRoute(builder: (_) => const ForgetPasswordView());
       }
 
     default:

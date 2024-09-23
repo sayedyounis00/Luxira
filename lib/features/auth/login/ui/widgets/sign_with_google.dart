@@ -15,7 +15,7 @@ class SignWithGoogle extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 8),
         decoration: BoxDecoration(
           color: Colors.white,
-          border: Border.all(color: Colors.black.withOpacity(.5)),
+          border: Border.all(color: Colors.black),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Row(

@@ -1,8 +1,10 @@
 class ApiConstants {
   static const String basseUrl =
       'https://e-commerce-production-2d41.up.railway.app';
-  static const String registerUrl = '$basseUrl/api/auth/register';
+  static const String register = '$basseUrl/api/auth/register';
+  static const String login = "$basseUrl/api/auth//login";
   static const String resendVerifyCodeUrl = "$basseUrl/api/auth/new-code";
+  static const String confirmAccount = "$basseUrl/api/auth/verify";
   static const String sendNewCodetoResetPAss = "$basseUrl/api/auth/new-code";
   static const String regiserUsingGoogle = "$basseUrl/auth/google/register";
 }

@@ -20,32 +20,34 @@ class HomeView extends StatelessWidget {
         child: Scaffold(
       appBar: customAppBar(),
       bottomNavigationBar: const BottomNav(),
-      body: Column(
-        children: [
-          const CustomSearchBar(),
-          const SpaceV(30),
-          const HomeSlider(),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            child: TitleAndSeeAll(title: 'Categories', onPressed: () {}),
-          ),
-          AppListViewbuilder(
-              height: MediaQuery.of(context).size.height * 0.1,
-              itemBuilder: (BuildContext context, int index) {
-                return CategoryCard(categorie: categorie[index]);
-              },
-              itemCount: categorie.length),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            child: TitleAndSeeAll(title: 'Offers', onPressed: () {}),
-          ),
-          AppListViewbuilder(
-              height: MediaQuery.of(context).size.height * 0.25,
-              itemBuilder: (BuildContext context, int index) {
-                return ProductCard(productDetails: product[index]);
-              },
-              itemCount: product.length),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const CustomSearchBar(),
+            const SpaceV(30),
+            const HomeSlider(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: TitleAndSeeAll(title: 'Categories', onPressed: () {}),
+            ),
+            AppListViewbuilder(
+                height: MediaQuery.of(context).size.height * 0.1,
+                itemBuilder: (BuildContext context, int index) {
+                  return CategoryCard(categorie: categorie[index]);
+                },
+                itemCount: categorie.length),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: TitleAndSeeAll(title: 'Offers', onPressed: () {}),
+            ),
+            AppListViewbuilder(
+                height: MediaQuery.of(context).size.height * 0.25,
+                itemBuilder: (BuildContext context, int index) {
+                  return ProductCard(productDetails: product[index]);
+                },
+                itemCount: product.length),
+          ],
+        ),
       ),
     ));
   }

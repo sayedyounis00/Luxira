@@ -3,8 +3,10 @@ import 'package:luxira/core/widgets/space.dart';
 
 class SignWithGoogle extends StatelessWidget {
   final Function() onTap;
+  final String text;
   const SignWithGoogle({
-    super.key, required this.onTap,
+    super.key,
+    required this.onTap, required this.text,
   });
 
   @override
@@ -27,7 +29,7 @@ class SignWithGoogle extends StatelessWidget {
             ),
             const SpaceH(15),
             Text(
-              'Sing up with Google',
+              '$text with Google',
               style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                     fontWeight: FontWeight.w500,
                     fontSize: 15.5,

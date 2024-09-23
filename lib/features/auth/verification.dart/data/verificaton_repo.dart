@@ -16,7 +16,7 @@ class VerificatonRepo {
   void verifiyRegistration({required String email,required String code}) async {
     Map<String, dynamic> data = {'email': email,'code':code};
     Response response = await ApiServices()
-        .postMethod(data: data, url: ApiConstants.resendVerifyCodeUrl);
+        .postMethod(data: data, url: ApiConstants.confirmAccount);
     if (response.statusCode != 200) {
       log('Errro ${response.statusCode}');
     }

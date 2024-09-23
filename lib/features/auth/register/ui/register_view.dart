@@ -14,7 +14,6 @@ import 'package:luxira/features/auth/register/logic/cubit/register_cubit.dart';
 import 'package:luxira/features/auth/register/ui/widgets/welcome_text.dart';
 import 'package:luxira/features/auth/verification.dart/ui/verification_view.dart';
 
-
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
 

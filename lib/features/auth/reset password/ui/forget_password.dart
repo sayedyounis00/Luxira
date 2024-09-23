@@ -7,14 +7,14 @@ import 'package:luxira/core/widgets/space.dart';
 import 'package:luxira/features/auth/reset%20password/data/services/reset_password.dart';
 import 'package:luxira/features/auth/verification.dart/ui/verification_view.dart';
 
-class ForgetPassword extends StatefulWidget {
-  const ForgetPassword({super.key});
+class ForgetPasswordView extends StatefulWidget {
+  const ForgetPasswordView({super.key});
 
   @override
-  State<ForgetPassword> createState() => _ForgetPasswordState();
+  State<ForgetPasswordView> createState() => _ForgetPasswordViewState();
 }
 
-class _ForgetPasswordState extends State<ForgetPassword> {
+class _ForgetPasswordViewState extends State<ForgetPasswordView> {
   TextEditingController emailcontroller = TextEditingController();
   var myKey = GlobalKey<FormState>();
   @override

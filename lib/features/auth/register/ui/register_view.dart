@@ -1,17 +1,15 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:luxira/core/helper/validation/form_validation.dart';
 import 'package:luxira/core/utils/style/text_styles.dart';
+import 'package:luxira/core/widgets/app_alert_dialog.dart';
 import 'package:luxira/core/widgets/app_custom_button.dart';
 import 'package:luxira/core/widgets/custom_text_feild.dart';
 import 'package:luxira/core/widgets/drop_down_menu.dart';
 import 'package:luxira/core/widgets/space.dart';
 import 'package:luxira/features/auth/login/ui/widgets/sign_with_google.dart';
-import 'package:luxira/features/auth/register/data/err_response.dart';
 import 'package:luxira/features/auth/register/data/new_user.dart';
 import 'package:luxira/features/auth/register/logic/cubit/register_cubit.dart';
 import 'package:luxira/features/auth/register/ui/widgets/welcome_text.dart';
@@ -206,7 +204,7 @@ class _RegisterViewState extends State<RegisterView> {
                                   return showDialog<void>(
                                     context: context,
                                     barrierDismissible:
-                                        false, // user must tap button!
+                                        false,
                                     builder: (BuildContext context) {
                                       return AppAlertDialog(
                                         title: 'Failed To Register.',
@@ -234,7 +232,9 @@ class _RegisterViewState extends State<RegisterView> {
                     ],
                   ),
                   const SpaceV(20),
-                  SignWithGoogle(onTap: () async {
+                  SignWithGoogle(
+                    text: "Sing up",
+                    onTap: () async {
                     BlocProvider.of<RegisterCubit>(context).googleSignin();
                   })
                 ],
@@ -257,32 +257,3 @@ class _RegisterViewState extends State<RegisterView> {
   }
 }
 
-class AppAlertDialog extends StatelessWidget {
-  final String title;
-  final Widget content;
-  const AppAlertDialog({
-    super.key,
-    required this.title,
-    required this.content,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
-      title: Text(title),
-      content: SingleChildScrollView(
-        child: ListBody(
-          children: <Widget>[content],
-        ),
-      ),
-      actions: <Widget>[
-        TextButton(
-          child: const Text('OK'),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-      ],
-    );
-  }
-}

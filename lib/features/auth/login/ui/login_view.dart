@@ -114,7 +114,9 @@ class _LoginViewState extends State<LoginView> {
                     ],
                   ),
                   const SpaceV(20),
-                  const SignWithGoogle()
+                   SignWithGoogle(
+                    onTap: () {},
+                  )
                 ],
               ),
             ),

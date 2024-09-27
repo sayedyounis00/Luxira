@@ -7,23 +7,26 @@ class AppCustomButton extends StatelessWidget {
   final Widget buttonWidget;
   final double? height;
   const AppCustomButton({
-    super.key, required this.onTap, required this.buttonWidget,  this.height,
+    super.key,
+    required this.onTap,
+    required this.buttonWidget,
+    this.height,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap:onTap ,
+      onTap: onTap,
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 16.h),
+        margin: EdgeInsets.only(top: 16.h),
         alignment: Alignment.center,
-        height: height??50,
+        height: height ?? 50,
         width: double.infinity,
         decoration: BoxDecoration(
           color: AppColors.kPrimaryColor,
           borderRadius: BorderRadius.circular(8.r),
         ),
-        child:  buttonWidget,
+        child: buttonWidget,
       ),
     );
   }

@@ -3,14 +3,14 @@ import 'package:luxira/core/utils/constants/colors.dart';
 import 'package:luxira/core/widgets/space.dart';
 
 class CustomSearchBar extends StatelessWidget {
-   const CustomSearchBar({
+  const CustomSearchBar({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      padding: const EdgeInsets.symmetric(horizontal: 12.0),
       child: Row(
         children: [
           Expanded(
@@ -34,7 +34,7 @@ class CustomSearchBar extends StatelessWidget {
                 width: 1.4,
               ),
             ),
-            child:   const Icon(Icons.tune, color: AppColors.kPrimaryColor),
+            child: const Icon(Icons.tune, color: AppColors.kPrimaryColor),
           ),
         ],
       ),
@@ -42,7 +42,7 @@ class CustomSearchBar extends StatelessWidget {
   }
 
   InputDecoration decorationOfSearchBar() {
-    return   const InputDecoration(
+    return const InputDecoration(
       prefixIcon: Icon(Icons.search_rounded, color: AppColors.kPrimaryColor),
       hintText: 'Search',
       hintStyle: TextStyle(color: Colors.grey),

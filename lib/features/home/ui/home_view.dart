@@ -24,28 +24,48 @@ class HomeView extends StatelessWidget {
         child: Column(
           children: [
             const CustomSearchBar(),
-            const SpaceV(30),
+            const SpaceV(20),
             const HomeSlider(),
+            TitleAndSeeAll(title: 'Categories', onPressed: () {}),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: TitleAndSeeAll(title: 'Categories', onPressed: () {}),
+              padding: const EdgeInsets.only(left: 10.0),
+              child: AppListViewbuilder(
+                  height: MediaQuery.of(context).size.height * 0.1,
+                  itemBuilder: (BuildContext context, int index) {
+                    return CategoryCard(categorie: categorie[index]);
+                  },
+                  itemCount: categorie.length),
             ),
-            AppListViewbuilder(
-                height: MediaQuery.of(context).size.height * 0.1,
-                itemBuilder: (BuildContext context, int index) {
-                  return CategoryCard(categorie: categorie[index]);
-                },
-                itemCount: categorie.length),
+            TitleAndSeeAll(title: 'Offers', onPressed: () {}),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: TitleAndSeeAll(title: 'Offers', onPressed: () {}),
+              padding: const EdgeInsets.only(left: 16.0),
+              child: AppListViewbuilder(
+                  height: MediaQuery.of(context).size.height * 0.27,
+                  itemBuilder: (BuildContext context, int index) {
+                    return ProductCard(productDetails: product[index]);
+                  },
+                  itemCount: product.length),
             ),
-            AppListViewbuilder(
-                height: MediaQuery.of(context).size.height * 0.25,
-                itemBuilder: (BuildContext context, int index) {
-                  return ProductCard(productDetails: product[index]);
-                },
-                itemCount: product.length),
+            TitleAndSeeAll(title: 'Recommended', onPressed: () {}),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: AppListViewbuilder(
+                  height: MediaQuery.of(context).size.height * 0.27,
+                  itemBuilder: (BuildContext context, int index) {
+                    return ProductCard(productDetails: product[index]);
+                  },
+                  itemCount: product.length),
+            ),
+            TitleAndSeeAll(title: 'Our Products', onPressed: () {}),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: AppListViewbuilder(
+                  height: MediaQuery.of(context).size.height * 0.27,
+                  itemBuilder: (BuildContext context, int index) {
+                    return ProductCard(productDetails: product[index]);
+                  },
+                  itemCount: product.length),
+            ),
           ],
         ),
       ),

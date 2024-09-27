@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:luxira/core/helper/networking/api_constants.dart';
-import 'package:luxira/core/helper/networking/api_services.dart';
 import 'package:luxira/features/auth/register/data/err_response.dart';
 
 part 'verification_state.dart';

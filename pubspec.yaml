@@ -1,14 +1,15 @@
 name: luxira
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.4.3 <4.0.0'
+  sdk: ">=3.4.3 <4.0.0"
 
 dependencies:
   carousel_slider: ^5.0.0
   cupertino_icons: ^1.0.6
+
   dio: ^5.7.0
   flashy_tab_bar2: ^0.0.10
   flutter:
@@ -25,7 +26,6 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
-
   uses-material-design: true
 
   assets:

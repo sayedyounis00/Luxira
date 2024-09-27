@@ -8,46 +8,44 @@ class CategoryView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          leading: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: const Icon(Icons.arrow_back_ios)),
-          title: const Text(
-            'Clothes',
-            style: TextStyle(
-              fontSize: 19,
-              fontWeight: FontWeight.w500,
-            ),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(Icons.arrow_back_ios)),
+        title: const Text(
+          'Clothes',
+          style: TextStyle(
+            fontSize: 19,
+            fontWeight: FontWeight.w500,
           ),
         ),
-        body: Column(
-          children: [
-            const CustomSearchBar(),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: GridView.builder(
-                  itemCount: product.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 10,
-                    crossAxisSpacing: 10,
-                    childAspectRatio: 2 / 2.8,
-                  ),
-                  itemBuilder: (context, index) {
-                    return ProductCard(productDetails: product[index]);
-                  },
+      ),
+      body: Column(
+        children: [
+          const CustomSearchBar(),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: GridView.builder(
+                itemCount: product.length,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
+                  childAspectRatio: 2 / 2.8,
                 ),
+                itemBuilder: (context, index) {
+                  return ProductCard(productDetails: product[index]);
+                },
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

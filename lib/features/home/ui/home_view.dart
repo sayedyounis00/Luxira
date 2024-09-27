@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:luxira/core/utils/navigation/routers.dart';
 import 'package:luxira/core/widgets/app_list_view_b.dart';
 import 'package:luxira/core/widgets/space.dart';
 import 'package:luxira/features/home/data/model/category.dart';
@@ -25,7 +26,13 @@ class HomeView extends StatelessWidget {
             const CustomSearchBar(),
             const SpaceV(20),
             const HomeSlider(),
-            TitleAndSeeAll(title: 'Categories', onPressed: () {}),
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 8.0),
+              child: TitleAndSeeAll(
+                title: 'Categories',
+                haveSeeAll: false,
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.only(left: 10.0),
               child: AppListViewbuilder(
@@ -35,7 +42,11 @@ class HomeView extends StatelessWidget {
                   },
                   itemCount: categorie.length),
             ),
-            TitleAndSeeAll(title: 'Offers', onPressed: () {}),
+            TitleAndSeeAll(
+                title: 'Offers',
+                onPressed: () {
+                  Navigator.pushNamed(context, AppRouter.categoryPage);
+                }),
             Padding(
               padding: const EdgeInsets.only(left: 16.0),
               child: AppListViewbuilder(
@@ -45,7 +56,11 @@ class HomeView extends StatelessWidget {
                   },
                   itemCount: product.length),
             ),
-            TitleAndSeeAll(title: 'Recommended', onPressed: () {}),
+            TitleAndSeeAll(
+                title: 'Recommended',
+                onPressed: () {
+                  Navigator.pushNamed(context, AppRouter.categoryPage);
+                }),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12.0),
               child: AppListViewbuilder(
@@ -55,7 +70,11 @@ class HomeView extends StatelessWidget {
                   },
                   itemCount: product.length),
             ),
-            TitleAndSeeAll(title: 'Our Products', onPressed: () {}),
+            TitleAndSeeAll(
+                title: 'Our Products',
+                onPressed: () {
+                  Navigator.pushNamed(context, AppRouter.categoryPage);
+                }),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12.0),
               child: AppListViewbuilder(

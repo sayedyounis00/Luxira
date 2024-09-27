@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 
 class TitleAndSeeAll extends StatelessWidget {
   final String title;
+  final bool haveSeeAll;
   final void Function()? onPressed;
 
-  const TitleAndSeeAll({super.key, required this.title, this.onPressed});
+  const TitleAndSeeAll(
+      {super.key, required this.title, this.onPressed, this.haveSeeAll = true});
 
   @override
   Widget build(BuildContext context) {
@@ -18,17 +20,19 @@ class TitleAndSeeAll extends StatelessWidget {
             title,
             style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
           ),
-          TextButton(
-            onPressed: onPressed,
-            child: const Text(
-              textAlign: TextAlign.start,
-              'See All',
-              style: TextStyle(
-                fontSize: 12,
-                color: Color(0xff0088C9),
-              ),
-            ),
-          ),
+          haveSeeAll
+              ? TextButton(
+                  onPressed: onPressed,
+                  child: const Text(
+                    textAlign: TextAlign.start,
+                    'See All',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Color(0xff0088C9),
+                    ),
+                  ),
+                )
+              : const SizedBox(),
         ],
       ),
     );

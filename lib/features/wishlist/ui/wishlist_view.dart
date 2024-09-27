@@ -7,26 +7,19 @@ class WishlistView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        title: const Text(
-          'Wishlist',
-          style: TextStyle(
-            fontSize: 19,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ),
-      body: Column(
+    return Padding(
+      padding: const EdgeInsets.only(top: 60.0),
+      child: Column(
         children: [
+          const Text(
+            'Wishlist',
+            style: TextStyle(fontSize: 19, fontWeight: FontWeight.w500),
+          ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 10),
               child: GridView.builder(
+                padding: EdgeInsets.zero,
                 itemCount: product.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,

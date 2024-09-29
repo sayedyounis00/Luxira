@@ -23,7 +23,7 @@ class Luxira extends StatelessWidget {
         child: const MaterialApp(
           debugShowCheckedModeBanner: false,
           onGenerateRoute: onGenerate,
-          initialRoute: AppRouter.forgetPassword,
+          initialRoute: AppRouter.resetPassword,
         ),
       ),
     );

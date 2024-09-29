@@ -3,8 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:luxira/core/utils/constants/colors.dart';
 
 class AppDropDownMenu extends StatefulWidget {
+  final List<String> types;
+  final String dropdownVal;
+  final Function(String?) onChange;
   const AppDropDownMenu({
-    super.key,
+    super.key, required this.types, required this.dropdownVal, required this.onChange,
   });
 
   @override
@@ -12,8 +15,6 @@ class AppDropDownMenu extends StatefulWidget {
 }
 
 class _AppDropDownMenuState extends State<AppDropDownMenu> {
-  List<String> types = ['male', 'female'];
-   String dropdownVal='male';
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -32,15 +33,10 @@ class _AppDropDownMenuState extends State<AppDropDownMenu> {
           child: DropdownButton<String>(
             isExpanded: true,
             hint: const Text('Gender'),
-            value: dropdownVal,
+            value: widget.dropdownVal,
             icon: const Icon(Icons.keyboard_arrow_down_sharp),
-            onChanged: (String? value) {
-              // This is called when the user selects an item.
-              setState(() {
-                dropdownVal = value!;
-              });
-            },
-            items: types.map<DropdownMenuItem<String>>((String value) {
+            onChanged: widget.onChange,
+            items: widget.types.map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
                 child: Text(value),

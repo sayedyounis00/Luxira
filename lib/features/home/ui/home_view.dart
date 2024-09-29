@@ -4,7 +4,6 @@ import 'package:luxira/core/widgets/space.dart';
 import 'package:luxira/features/home/data/model/category.dart';
 import 'package:luxira/features/home/data/model/product.dart';
 import 'package:luxira/features/home/ui/widgets/app_bar.dart';
-import 'package:luxira/features/home/ui/widgets/bottom_nav_bar.dart';
 import 'package:luxira/features/home/ui/widgets/category_card.dart';
 import 'package:luxira/features/home/ui/widgets/custom_search.dart';
 import 'package:luxira/features/home/ui/widgets/product_card.dart';
@@ -19,7 +18,6 @@ class HomeView extends StatelessWidget {
     return SafeArea(
         child: Scaffold(
       appBar: customAppBar(),
-      bottomNavigationBar: const BottomNav(),
       body: SingleChildScrollView(
         child: Column(
           children: [

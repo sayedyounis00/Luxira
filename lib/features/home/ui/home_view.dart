@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:luxira/core/utils/navigation/routers.dart';
 import 'package:luxira/core/widgets/app_list_view_b.dart';
 import 'package:luxira/core/widgets/space.dart';
 import 'package:luxira/features/home/data/model/category.dart';
@@ -11,42 +12,81 @@ import 'package:luxira/features/home/ui/widgets/slider_item.dart';
 import 'package:luxira/features/home/ui/widgets/title_and_see_all.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+  const HomeView({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
+    return Scaffold(
       appBar: customAppBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
             const CustomSearchBar(),
-            const SpaceV(30),
+            const SpaceV(20),
             const HomeSlider(),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: TitleAndSeeAll(title: 'Categories', onPressed: () {}),
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 8.0),
+              child: TitleAndSeeAll(
+                title: 'Categories',
+                haveSeeAll: false,
+              ),
             ),
-            AppListViewbuilder(
-                height: MediaQuery.of(context).size.height * 0.1,
-                itemBuilder: (BuildContext context, int index) {
-                  return CategoryCard(categorie: categorie[index]);
-                },
-                itemCount: categorie.length),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: TitleAndSeeAll(title: 'Offers', onPressed: () {}),
+              padding: const EdgeInsets.only(left: 10.0),
+              child: AppListViewbuilder(
+                  height: MediaQuery.of(context).size.height * 0.1,
+                  itemBuilder: (BuildContext context, int index) {
+                    return CategoryCard(categorie: categorie[index]);
+                  },
+                  itemCount: categorie.length),
             ),
-            AppListViewbuilder(
-                height: MediaQuery.of(context).size.height * 0.25,
-                itemBuilder: (BuildContext context, int index) {
-                  return ProductCard(productDetails: product[index]);
-                },
-                itemCount: product.length),
+            TitleAndSeeAll(
+                title: 'Offers',
+                onPressed: () {
+                  Navigator.pushNamed(context, AppRouter.categoryPage);
+                }),
+            Padding(
+              padding: const EdgeInsets.only(left: 16.0),
+              child: AppListViewbuilder(
+                  height: MediaQuery.of(context).size.height * 0.27,
+                  itemBuilder: (BuildContext context, int index) {
+                    return ProductCard(productDetails: product[index]);
+                  },
+                  itemCount: product.length),
+            ),
+            TitleAndSeeAll(
+                title: 'Recommended',
+                onPressed: () {
+                  Navigator.pushNamed(context, AppRouter.categoryPage);
+                }),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: AppListViewbuilder(
+                  height: MediaQuery.of(context).size.height * 0.27,
+                  itemBuilder: (BuildContext context, int index) {
+                    return ProductCard(productDetails: product[index]);
+                  },
+                  itemCount: product.length),
+            ),
+            TitleAndSeeAll(
+                title: 'Our Products',
+                onPressed: () {
+                  Navigator.pushNamed(context, AppRouter.categoryPage);
+                }),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: AppListViewbuilder(
+                  height: MediaQuery.of(context).size.height * 0.27,
+                  itemBuilder: (BuildContext context, int index) {
+                    return ProductCard(productDetails: product[index]);
+                  },
+                  itemCount: product.length),
+            ),
           ],
         ),
       ),
-    ));
+    );
   }
 }

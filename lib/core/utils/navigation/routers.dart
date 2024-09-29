@@ -8,4 +8,6 @@ class AppRouter {
   static const String resetDone = '/resetDone';
   static const String mainHome = '/mainHome';
   static const String homePage = '/homePage';
+  static const String categoryPage = '/categoryPage';
+  static const String wishlistPage = '/wishlistPage';
 }

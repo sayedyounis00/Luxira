@@ -36,7 +36,7 @@ class CategoryCard extends StatelessWidget {
                   Text(
                     categorie.title,
                     style: TextStyle(
-                        fontSize: 34.sp, color: Colors.black.withOpacity(.6)),
+                        fontSize: 34.sp, color: Colors.black),
                   ),
                 ],
               )),

@@ -9,4 +9,6 @@ class TextStyles {
        const TextStyle(fontSize: 32, fontWeight: FontWeight.w500,color: Colors.black);
   static  TextStyle font18Weight500Grey =
         const TextStyle(fontSize: 18,fontWeight: FontWeight.w500,color: Colors.grey);
+  static  TextStyle font12Weight500Grey =
+        const TextStyle(fontSize: 12,fontWeight: FontWeight.w500,color: Colors.grey);
 }

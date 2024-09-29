@@ -1,9 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:luxira/core/helper/networking/api_constants.dart';
-import 'package:luxira/features/auth/register/data/err_response.dart';
+import 'package:luxira/features/auth/ui/verification.dart/logic/cubit/verification_cubit.dart';
 
-part 'verification_state.dart';
 
 class VerificationCubit extends Cubit<VerificationState> {
   VerificationCubit() : super(VerificationInitial());
@@ -15,7 +14,7 @@ class VerificationCubit extends Cubit<VerificationState> {
       emit(VerificationSuccess());
     } on DioException catch (e) {
       emit(VerificationFailes(
-          errmessage: ErrResponse.fromJson(e.response!.data)));
+          errmessage: ''));
     }
   }
 
@@ -27,7 +26,7 @@ class VerificationCubit extends Cubit<VerificationState> {
       emit(VerificationSuccess());
     } on DioException catch (e) {
       emit(VerificationFailes(
-          errmessage: ErrResponse.fromJson(e.response!.data)));
+          errmessage: ''));
     }
 
   }

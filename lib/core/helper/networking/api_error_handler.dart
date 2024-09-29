@@ -1,9 +1,34 @@
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 // ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import 'package:luxira/core/helper/networking/api_constants.dart';
 
-class ApiErrorHandler {}
+class ApiErrorHandler {
+  String getError(int statusCode) {
+    switch (statusCode) {
+      case ResponseCode.INTERNAL_SERVER_ERROR:
+        return ResponseMessage.INTERNAL_SERVER_ERROR;
+      case ResponseCode.API_LOGIC_ERROR:
+        return 'API_LOGIC_ERROR';
+      case ResponseCode.BAD_REQUEST:
+        return ResponseMessage.BAD_REQUEST;
+      case ResponseCode.FORBIDDEN:
+        return ResponseMessage.FORBIDDEN;
+      case ResponseCode.NOT_FOUND:
+        return ResponseMessage.NOT_FOUND;
+      case ResponseCode.NO_CONTENT:
+        return ResponseMessage.NO_CONTENT;
+      case ResponseCode.SUCCESS:
+        return ResponseMessage.OK;
+      case ResponseCode.UNAUTORISED:
+        return ResponseMessage.UNAUTORISED;
+      default:
+        return '';
+    }
+  }
+}
+
 enum DataSource {
   NO_CONTENT,
   BAD_REQUEST,
@@ -31,6 +56,7 @@ class ResponseCode {
   static const int NOT_FOUND = 404; // failure, not found
   static const int API_LOGIC_ERROR = 422; // API , lOGIC ERROR
 }
+
 class ResponseMessage {
   static const String NO_CONTENT =
       ApiErrors.noContent; // success with no data (no content)
@@ -53,4 +79,5 @@ class ResponseMessage {
   static String CACHE_ERROR = ApiErrors.cacheError;
   static String NO_INTERNET_CONNECTION = ApiErrors.noInternetError;
   static String DEFAULT = ApiErrors.defaultError;
+  static String OK = ApiErrors.ok;
 }

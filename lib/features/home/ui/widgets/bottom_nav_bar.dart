@@ -3,19 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class BottomNav extends StatefulWidget {
-  const BottomNav({super.key});
+  final Function(int) onItemTapped;
+  final int selectedIndex;
+  const BottomNav({
+    super.key,
+    required this.onItemTapped, required this.selectedIndex,
+  });
 
   @override
   State<BottomNav> createState() => _BottomNavState();
 }
 
 class _BottomNavState extends State<BottomNav> {
-  int selectedIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return FlashyTabBar(
-        selectedIndex: selectedIndex,
+        selectedIndex: widget.selectedIndex,
         items: [
           FlashyTabBarItem(
               icon: const Icon(FontAwesomeIcons.house),
@@ -30,9 +33,6 @@ class _BottomNavState extends State<BottomNav> {
               icon: const Icon(FontAwesomeIcons.user),
               title: const Text('Profile'))
         ],
-        onItemSelected: (val) {
-          selectedIndex = val;
-          setState(() {});
-        });
+        onItemSelected: widget.onItemTapped);
   }
 }
